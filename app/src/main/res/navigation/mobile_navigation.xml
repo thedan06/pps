@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_acaricides">
+
+    <fragment
+        android:id="@+id/navigation_acaricides"
+        android:name="com.dustanmbaga.pps.ui.acaricides.AcaricidesFragment"
+        android:label="@string/title_acaricides"
+        tools:layout="@layout/fragment_acaricides" />
+
+    <fragment
+        android:id="@+id/navigation_learn"
+        android:name="com.dustanmbaga.pps.ui.learn.LearnFragment"
+        android:label="@string/title_learn"
+        tools:layout="@layout/fragment_learn" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.dustanmbaga.pps.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
