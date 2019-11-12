@@ -10,18 +10,18 @@ import com.dustanmbaga.pps.R
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: SettingsViewModel
+    private lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
+        settingsViewModel =
             ViewModelProviders.of(this).get(SettingsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
         /*val textView: TextView = root.findViewById(R.id.text_settings)
-        notificationsViewModel.text.observe(this, Observer {
+        settingsViewModel.text.observe(this, Observer {
             textView.text = it
         })*/
         return root

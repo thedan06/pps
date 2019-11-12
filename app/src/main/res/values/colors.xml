@@ -27,4 +27,6 @@
     <color name="overlay_light_80">#CCFFFFFF</color>
     <color name="overlay_light_90">#E6FFFFFF</color>
 
+    <color name="overlay_white_100">#FFFFFFFF</color>
+
 </resources>

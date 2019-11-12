@@ -12,18 +12,18 @@ import com.dustanmbaga.pps.R
 
 class LearnFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: LearnViewModel
+    private lateinit var learnViewModel: LearnViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
+        learnViewModel =
             ViewModelProviders.of(this).get(LearnViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_learn, container, false)
         val textView: TextView = root.findViewById(R.id.text_learn)
-        dashboardViewModel.text.observe(this, Observer {
+        learnViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
