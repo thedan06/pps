@@ -5,9 +5,15 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_acaricides">
 
-    <fragment
+    <!--<fragment
         android:id="@+id/navigation_acaricides"
         android:name="com.dustanmbaga.pps.ui.acaricides.AcaricidesFragment"
+        android:label="@string/title_acaricides"
+        tools:layout="@layout/fragment_acaricides" />-->
+
+    <fragment
+        android:id="@+id/navigation_acaricides"
+        android:name="com.dustanmbaga.pps.acaricide.AcaricideFragment"
         android:label="@string/title_acaricides"
         tools:layout="@layout/fragment_acaricides" />
 

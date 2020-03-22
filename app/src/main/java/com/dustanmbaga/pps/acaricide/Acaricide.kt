@@ -5,6 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 
+/**
+ * Acaricide represents the Acaricide fetched from the network and stored in the DB
+ */
 @Entity(tableName = "acaricides")
 data class Acaricide(
     @NotNull

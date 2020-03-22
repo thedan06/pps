@@ -2,6 +2,7 @@ package com.dustanmbaga.pps.acaricide
 
 import android.content.ContentValues
 import android.content.Context
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,12 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import androidx.annotation.Nullable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dustanmbaga.pps.R
+
+/*
 
 class AcaricideRecyclerViewAdapter(private val mContext: Context) :
     RecyclerView.Adapter<AcaricideRecyclerViewAdapter.AcaricideViewHolder>(), Filterable {
@@ -70,9 +75,11 @@ class AcaricideRecyclerViewAdapter(private val mContext: Context) :
             } else {
                 val filterPattern = constraint.toString().toLowerCase().trim()
 
-                /*filteredList = mAcaricides.filter {
+                */
+/*filteredList = mAcaricides.filter {
                     it.commonName == filterPattern || it.regNumber == filterPattern || it.registrant == filterPattern
-                }*/
+                }*//*
+
 
                 mAcaricidesFull.iterator().forEach {
                     if (checkPattern(it.toString(), filterPattern)) {
@@ -103,3 +110,105 @@ class AcaricideRecyclerViewAdapter(private val mContext: Context) :
         }
     }
 }
+
+//
+class AcaricideAdapters(@Nullable clickCallback: AcaricideClickCallback) :
+    RecyclerView.Adapter<AcaricideAdapter.AcaricideViewHolder>() {
+    var mAcaricideList: List<Acaricide?>? = null
+
+    @Nullable
+    private val mAcaricideClickCallback: AcaricideClickCallback
+    
+    fun setAcaricideList(acaricideList: List<Acaricide?>) {
+        if (mAcaricideList == null) {
+            mAcaricideList = acaricideList
+            notifyItemRangeInserted(0, acaricideList.size)
+        } else {
+            val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun getOldListSize(): Int {
+                    return mAcaricideList!!.size
+                }
+
+                override fun getNewListSize(): Int {
+                    return acaricideList.size
+                }
+
+                override fun areItemsTheSame(
+                    oldItemPosition: Int,
+                    newItemPosition: Int
+                ): Boolean {
+                    return mAcaricideList!![oldItemPosition]!!.id == acaricideList[newItemPosition]!!.id
+                }
+
+                override fun areContentsTheSame(
+                    oldItemPosition: Int,
+                    newItemPosition: Int
+                ): Boolean {
+                    val newAcaricide: Acaricide? = acaricideList[newItemPosition]
+                    val oldAcaricide: Acaricide? = mAcaricideList!![oldItemPosition]
+                    return (newAcaricide!!.id == oldAcaricide!!.id && TextUtils.equals(
+                        newAcaricide.commonName,
+                        oldAcaricide.commonName
+                    )
+                        && TextUtils.equals(newAcaricide.tradeName, oldAcaricide.tradeName)
+                        && newAcaricide.regNumber === oldAcaricide.regNumber)
+                }
+            })
+            mAcaricideList = acaricideList
+            result.dispatchUpdatesTo(this)
+        }
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AcaricideViewHolder {
+        val binding: AcaricideItemBinding = DataBindingUtil
+            .inflate(
+                LayoutInflater.from(parent.context), R.layout.acaricide_item,
+                parent, false
+            )
+        binding.setCallback(mAcaricideClickCallback)
+        return AcaricideViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(
+        holder: AcaricideViewHolder,
+        position: Int
+    ) {
+        holder.binding.setAcaricide(mAcaricideList!![position])
+        holder.binding.executePendingBindings()
+    }
+
+    override fun getItemCount(): Int {
+        return if (mAcaricideList == null) 0 else mAcaricideList.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return mAcaricideList!![position].getId()
+    }
+
+    class AcaricideViewHolder(binding: AcaricideItemBinding) :
+        RecyclerView.ViewHolder(binding.getRoot()) {
+        val binding: AcaricideItemBinding
+
+        init {
+            this.binding = binding
+        }
+    }
+
+    init {
+        mAcaricideClickCallback = clickCallback
+        setHasStableIds(true)
+    }
+}
+
+interface AcaricideClickCallback {
+    fun onClick(acaricide: Acaricide?)
+}
+
+
+//-----------------------
+
+*/
+

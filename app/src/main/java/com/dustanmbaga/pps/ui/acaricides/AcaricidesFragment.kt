@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dustanmbaga.pps.R
 import com.dustanmbaga.pps.acaricide.Acaricide
-import com.dustanmbaga.pps.acaricide.AcaricideRecyclerViewAdapter
+//import com.dustanmbaga.pps.acaricide.AcaricideRecyclerViewAdapter
 import com.dustanmbaga.pps.acaricide.AcaricideViewModel
+/*
 
 
 class AcaricidesFragment : Fragment() {
@@ -33,7 +34,7 @@ class AcaricidesFragment : Fragment() {
         Acaricide(4, "Norotraz 12.5%", "Amitraz 125g/l", "AC/0022", "Norbrook Laboratories-Kenya", "Control of Ticks on cattle.", "Full Registration")
     )
 
-    private lateinit var acaricidesViewModel: AcaricidesViewModel
+    private lateinit var acaricidesViewModel: AcaricideViewModel
 
     private lateinit var myAcaricideViewModel: AcaricideViewModel
 
@@ -42,8 +43,10 @@ class AcaricidesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /*acaricidesViewModel =
-            ViewModelProviders.of(this).get(AcaricidesViewModel::class.java)*/
+        */
+/*acaricidesViewModel =
+            ViewModelProviders.of(this).get(AcaricidesViewModel::class.java)*//*
+
         val root = inflater.inflate(R.layout.fragment_acaricides, container, false)
 
         // ---------------------------------
@@ -104,4 +107,4 @@ class AcaricidesFragment : Fragment() {
         transaction.commit()
     }
 
-}
+}*/

@@ -23,7 +23,7 @@ class LearnFragment : Fragment() {
             ViewModelProviders.of(this).get(LearnViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_learn, container, false)
         val textView: TextView = root.findViewById(R.id.text_learn)
-        learnViewModel.text.observe(this, Observer {
+        learnViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

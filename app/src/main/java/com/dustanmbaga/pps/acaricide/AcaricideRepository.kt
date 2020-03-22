@@ -1,85 +1,78 @@
 package com.dustanmbaga.pps.acaricide
 
-import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
-import com.dustanmbaga.pps.PssDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
+/**
+ * AcaricideRepository provides an interface to fetch a acaricides or request a new one be generated.
+ *
+ * Repository modules handle data operations. They provide a clean API so that the rest of the app
+ * can retrieve this data easily. They know where to get the data from and what API calls to make
+ * when data is updated. You can consider repositories to be mediators between different data
+ * sources, in our case it mediates between a network API and an offline database cache.
+ */
+class AcaricideRepository(val network: AcaricideNetwork, val acaricideDao: AcaricideDao) {
+    /**
+     * [LiveData] to load acaricide.
+     *
+     * This is the main interface for loading a acaricide. The acaricide will be loaded from the offline
+     * cache.
+     *
+     * Observing this will not cause the acaricide to be refreshed, use [AcaricideRepository.refreshAcaricide]
+     * to refresh the acaricide.
+     */    
+    val acaricides: LiveData<Array<Acaricide>?> = acaricideDao.acaricidesLiveData
 
-class AcaricideRepository(application: Application) {
-    private var acaricideDao: AcaricideDao?
-    private val allAcaricides: LiveData<List<Acaricide>>?
-
-    init {
-        val database = PssDatabase.getInstance(application)
-
-        acaricideDao = database?.acaricideDao()
-        allAcaricides = acaricideDao?.getAllAcaricides()
+    /**
+     * Refresh the current acaricide and save the results to the offline cache.
+     *
+     * This method does not return the new acaricide. Use [AcaricideRepository.acaricides] to observe
+     * the current acaricides.
+     */
+    suspend fun refreshAcaricide() {
+        try {
+            
+            // TODO: before inserting, count number of entries in online db to check it there are newly added items
+            val result = network.fetchAcaricides()
+            acaricideDao.insertAll(result)
+            
+        } catch (error: Throwable) {
+            throw AcaricideRefreshError("Unable to refresh Acaricides", error)
+        }
     }
 
-    fun insertAcaricide(acaricide: Acaricide) {
-        InsertAsyncTask(acaricideDao!!).execute(acaricide)
-    }
-
-    fun deleteAcaricide(acaricide: Acaricide) {
-        DeleteAsyncTask(acaricideDao!!).execute(acaricide)
-    }
-
-    fun deleteAllAcaricide() {
-        DeleteAllAsyncTask(acaricideDao!!).execute()
-    }
-
-    fun getAllAcaricides(): LiveData<List<Acaricide>> {
-        return allAcaricides!!
-    }
-
-    fun getAcaricideByTradeName(tradeName: String): Acaricide? {
-        val acaricidesList = allAcaricides?.value?.toList()
-
-        acaricidesList?.iterator()?.forEach {
-            if (it.tradeName == tradeName) {
-                return it
+    /**
+     * This API is exposed for callers from the Java Programming language.
+     *
+     * The request will run unstructured, which means it won't be able to be cancelled.
+     *
+     * @param acaricideRefreshCallback a callback
+     */
+    fun refreshAcaricideInterop(acaricideRefreshCallback: AcaricideRefreshCallback) {
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
+            try {
+                refreshAcaricide()
+                acaricideRefreshCallback.onCompleted()
+            } catch (throwable: Throwable) {
+                acaricideRefreshCallback.onError(throwable)
             }
         }
-
-        return null
     }
+    
+}
 
-    fun getAcaricidesByCommonName(commonName: String): LiveData<Acaricide?>? {
-        return acaricideDao?.getAcaricideByCommonName(commonName)
-    }
+/**
+ * Thrown when there was a error fetching a new acaricide
+ *
+ * @property message user ready error message
+ * @property cause the original cause of this exception
+ */
+class AcaricideRefreshError(message: String, cause: Throwable) : Throwable(message, cause)
 
-    fun getAcaricidesByRegCategory(regCategory: String): LiveData<List<Acaricide>>? {
-        /*val acaricidesList = allAcaricides?.value?.toList()
-
-        return acaricidesList?.filter {
-            it -> it.regCategory == regCategory
-        }*/
-
-        return acaricideDao?.getAcaricidesByRegCategory(regCategory)
-    }
-
-    private class InsertAsyncTask(private val acaricideDao: AcaricideDao): AsyncTask<Acaricide, Void, Void>() {
-        override fun doInBackground(vararg params: Acaricide): Void? {
-            acaricideDao.insertAcaricide(params[0])
-
-            return null
-        }
-    }
-
-    private class DeleteAsyncTask(private val acaricideDao: AcaricideDao): AsyncTask<Acaricide, Void, Void>() {
-        override fun doInBackground(vararg params: Acaricide): Void? {
-            acaricideDao.deleteAcaricide(params[0])
-
-            return null
-        }
-    }
-
-    private class DeleteAllAsyncTask(private val acaricideDao: AcaricideDao): AsyncTask<Acaricide, Void, Void>() {
-        override fun doInBackground(vararg params: Acaricide): Void? {
-            acaricideDao.deleteAllAcaricides()
-
-            return null
-        }
-    }
+interface AcaricideRefreshCallback {
+    fun onCompleted()
+    fun onError(cause: Throwable)
 }
