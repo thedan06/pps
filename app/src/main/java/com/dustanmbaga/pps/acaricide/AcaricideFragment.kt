@@ -1,6 +1,5 @@
 package com.dustanmbaga.pps.acaricide
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,18 +7,20 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.dustanmbaga.pps.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_acaricides.*
 
-
 class AcaricideFragment : Fragment() {
 
     private lateinit var fabRefresh: FloatingActionButton
+    private lateinit var acaricide_recyclerView: RecyclerView
     private lateinit var acaricideViewModel: AcaricideViewModel
+
+    private lateinit var adapter: AcaricideListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,16 +37,11 @@ class AcaricideFragment : Fragment() {
 
         acaricideViewModel = ViewModelProvider(this).get(AcaricideViewModel::class.java)
 
-        fabRefresh = root.findViewById<FloatingActionButton>(R.id.fab_refresh)
+        fabRefresh = root.findViewById(R.id.fab_refresh)
         fabRefresh.setOnClickListener {
-            acaricideViewModel.changeState()
-        }
-        //getSupportFragmentManager
-
-        fabRefresh.setOnClickListener {
-//            val fm: FragmentManager =
-//            fm.beginTransaction().add(R.layout.container_id, OtherFragmentObject()).commit();
-
+            //acaricideViewModel.changeState()
+            acaricideViewModel.getAcaricideFromApi()
+            //replaceFragment(AcaricideDetailsFragment())
         }
 
         acaricideViewModel.showProgress.observe(viewLifecycleOwner, Observer {
@@ -56,7 +52,23 @@ class AcaricideFragment : Fragment() {
             }
         })
 
+        acaricideViewModel.acaricideList.observe(viewLifecycleOwner, Observer {
+            adapter.setAcaricides(it)
+        })
+
+        adapter = AcaricideListAdapter(context!!)
+
+        acaricide_recyclerView = root.findViewById(R.id.acaricide_recyclerView)
+        acaricide_recyclerView.adapter = adapter
+
         //-------------------------
         return root
+    }
+
+    private fun replaceFragment(someFragment: Fragment) {
+        val transaction = fragmentManager!!.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, someFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

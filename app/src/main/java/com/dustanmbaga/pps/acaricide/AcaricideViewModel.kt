@@ -9,13 +9,19 @@ class AcaricideViewModel(application: Application): AndroidViewModel(application
 
     private val repository = AcaricideRepository(application)
     val showProgress: LiveData<Boolean>
+    val acaricideList: LiveData<List<AcaricideNetworkResponse>>
 
     init {
         this.showProgress = repository.showProgress
+        this.acaricideList = repository.acaricideList
     }
 
     fun changeState() {
         repository.changeState()
+    }
+
+    fun getAcaricideFromApi() {
+        repository.getAcaricideFromApi()
     }
 
 }

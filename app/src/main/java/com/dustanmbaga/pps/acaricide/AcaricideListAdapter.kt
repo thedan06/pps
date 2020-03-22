@@ -1,0 +1,79 @@
+package com.dustanmbaga.pps.acaricide
+
+import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.RecyclerView
+import com.dustanmbaga.pps.R
+import com.dustanmbaga.pps.acaricide.details.AcaricideDetailsFragment
+import kotlinx.android.synthetic.main.list_acaricide_item.view.*
+
+
+class AcaricideListAdapter (
+    private val context: Context
+) : RecyclerView.Adapter<AcaricideListAdapter.ViewHolder>() {
+
+    private var acaricides: List<AcaricideNetworkResponse> = ArrayList()
+
+    override fun getItemCount() = acaricides.size
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.list_acaricide_item,
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val current = acaricides[position]
+
+        holder.acaricideNo.text = current.id
+        holder.acaricideCommonName.text = current.common_name
+        holder.acaricideRegNo.text = current.reg_number
+        holder.acaricideRegistrant.text = current.registrant
+
+        val cardView: CardView = holder.itemView.acaricide_root_item
+        // Open Details Fragment
+        cardView.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("id", current.id)
+            bundle.putString("commonName", current.common_name)
+            bundle.putString("regNumber", current.reg_number)
+            bundle.putString("registrant", current.registrant)
+            bundle.putString("regCategory", current.reg_category)
+            bundle.putString("tradeName", current.trade_name)
+            bundle.putString("usage", current.usage)
+
+            val newFragment = AcaricideDetailsFragment()
+            newFragment.arguments = bundle
+
+            val manager: FragmentManager = (context as AppCompatActivity).supportFragmentManager
+            val transaction: FragmentTransaction = manager.beginTransaction()
+            transaction.replace(R.id.nav_host_fragment, newFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+    }
+
+    internal fun setAcaricides(acaricides: List<AcaricideNetworkResponse>) {
+        this.acaricides = acaricides
+        notifyDataSetChanged()
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var acaricideNo: TextView = itemView.findViewById(R.id.acaricide_item_no)
+        var acaricideCommonName: TextView = itemView.findViewById(R.id.acaricide_item_common_name)
+        var acaricideRegNo: TextView = itemView.findViewById(R.id.acaricide_item_reg_no)
+        var acaricideRegistrant: TextView = itemView.findViewById(R.id.acaricide_item_registrant)
+    }
+}
