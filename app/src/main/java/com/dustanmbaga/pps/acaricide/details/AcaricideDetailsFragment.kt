@@ -1,4 +1,4 @@
-package com.dustanmbaga.pps.ui.acaricides.details
+package com.dustanmbaga.pps.acaricide.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,16 @@ import com.dustanmbaga.pps.R
 
 class AcaricideDetailsFragment : Fragment() {
 
-    private lateinit var homeViewModel: AcaricideDetailsViewModel
+    private lateinit var acaricideDetailsViewModel: AcaricideDetailsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(AcaricideDetailsViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_acaricide_details, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_acaricides)
-//        homeViewModel.text.observe(this, Observer {
-//            textView.text = it
-//        })
+
         return root
     }
 }
