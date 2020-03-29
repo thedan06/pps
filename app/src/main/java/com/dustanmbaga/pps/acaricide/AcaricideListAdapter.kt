@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
@@ -57,12 +58,17 @@ class AcaricideListAdapter (
             val newFragment = AcaricideDetailsFragment()
             newFragment.arguments = bundle
 
-            val manager: FragmentManager = (context as AppCompatActivity).supportFragmentManager
-            val transaction: FragmentTransaction = manager.beginTransaction()
-            transaction.replace(R.id.nav_host_fragment, newFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            replaceFragment(newFragment)
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val manager: FragmentManager = (context as AppCompatActivity).supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+
+        transaction.replace(R.id.fragment_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     internal fun setAcaricides(acaricides: List<AcaricideNetworkResponse>) {

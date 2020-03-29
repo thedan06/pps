@@ -6,7 +6,10 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_acaricides.*
 class AcaricideFragment : Fragment() {
 
     private lateinit var fabRefresh: FloatingActionButton
-    private lateinit var acaricide_recyclerView: RecyclerView
+    private lateinit var acaricideRecyclerview: RecyclerView
     private lateinit var acaricideViewModel: AcaricideViewModel
 
     private lateinit var adapter: AcaricideListAdapter
@@ -28,12 +31,6 @@ class AcaricideFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_acaricides, container, false)
-
-        //-------------------------
-        /*val recyclerView = root.findViewById<RecyclerView>(R.id.acaricide_recyclerView)
-        val adapter = AcaricideListAdapter(context!!)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context!!)*/
 
         acaricideViewModel = ViewModelProvider(this).get(AcaricideViewModel::class.java)
 
@@ -58,16 +55,18 @@ class AcaricideFragment : Fragment() {
 
         adapter = AcaricideListAdapter(context!!)
 
-        acaricide_recyclerView = root.findViewById(R.id.acaricide_recyclerView)
-        acaricide_recyclerView.adapter = adapter
+        acaricideRecyclerview = root.findViewById(R.id.acaricide_recyclerView)
+        acaricideRecyclerview.adapter = adapter
 
         //-------------------------
         return root
     }
 
-    private fun replaceFragment(someFragment: Fragment) {
-        val transaction = fragmentManager!!.beginTransaction()
-        transaction.replace(R.id.nav_host_fragment, someFragment)
+    private fun replaceFragment(fragment: Fragment) {
+        val manager: FragmentManager = (context as AppCompatActivity).supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+
+        transaction.replace(R.id.fragment_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
