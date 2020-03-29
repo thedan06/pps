@@ -10,14 +10,11 @@ import androidx.room.*
 interface AcaricideDao{
 
     /*@Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAcaricide(acaricide: Acaricide)*/
+    suspend fun insertAcaricides(vararg acaricides: Array<Acaricide>)*/
 
-    /*@Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAcaricides(vararg acaricides: Array<Acaricide>)
-
-    *//*@get:Query("SELECT * FROM acaricides ORDER BY common_name, reg_number, registrant ASC")
-    val acaricidesLiveData: LiveData<Array<Acaricide>?>*//*
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAcaricide(acaricide: Acaricide)
 
     @Query("SELECT * FROM acaricides ORDER BY common_name, reg_number, registrant ASC")
-    fun getAcaricidesLiveData(): LiveData<List<Acaricide>>*/
+    fun getAcaricidesLiveData(): LiveData<List<Acaricide>>
 }

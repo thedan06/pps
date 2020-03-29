@@ -8,5 +8,4 @@ import androidx.lifecycle.ViewModel
 
 class AcaricideDetailsViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = AcaricideDetailsViewModel(application)
-
 }

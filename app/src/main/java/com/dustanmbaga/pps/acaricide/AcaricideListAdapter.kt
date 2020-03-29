@@ -40,11 +40,10 @@ class AcaricideListAdapter (
         holder.acaricideNo.text = current.id.toString()
         holder.acaricideCommonName.text = current.commonName
         holder.acaricideRegNo.text = current.regNumber
-        /*holder.acaricideCommonName.text = current.common_name
-        holder.acaricideRegNo.text = current.reg_number*/
         holder.acaricideRegistrant.text = current.registrant
 
         val cardView: CardView = holder.itemView.acaricide_root_item
+
         // Open Details Fragment
         cardView.setOnClickListener {
             val bundle = Bundle()
@@ -53,10 +52,6 @@ class AcaricideListAdapter (
             bundle.putString("regNumber", current.regNumber)
             bundle.putString("regCategory", current.regCategory)
             bundle.putString("tradeName", current.tradeName)
-            /*bundle.putString("commonName", current.common_name)
-            bundle.putString("regNumber", current.reg_number)
-            bundle.putString("regCategory", current.reg_category)
-            bundle.putString("tradeName", current.trade_name)*/
             bundle.putString("registrant", current.registrant)
             bundle.putString("usage", current.usage)
 
