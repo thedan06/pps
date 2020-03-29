@@ -16,12 +16,11 @@ import com.dustanmbaga.pps.R
 import com.dustanmbaga.pps.acaricide.details.AcaricideDetailsFragment
 import kotlinx.android.synthetic.main.list_acaricide_item.view.*
 
-
 class AcaricideListAdapter (
     private val context: Context
 ) : RecyclerView.Adapter<AcaricideListAdapter.ViewHolder>() {
 
-    private var acaricides: List<AcaricideNetworkResponse> = ArrayList()
+    private var acaricides: List<Acaricide> = ArrayList()
 
     override fun getItemCount() = acaricides.size
 
@@ -38,21 +37,27 @@ class AcaricideListAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = acaricides[position]
 
-        holder.acaricideNo.text = current.id
-        holder.acaricideCommonName.text = current.common_name
-        holder.acaricideRegNo.text = current.reg_number
+        holder.acaricideNo.text = current.id.toString()
+        holder.acaricideCommonName.text = current.commonName
+        holder.acaricideRegNo.text = current.regNumber
+        /*holder.acaricideCommonName.text = current.common_name
+        holder.acaricideRegNo.text = current.reg_number*/
         holder.acaricideRegistrant.text = current.registrant
 
         val cardView: CardView = holder.itemView.acaricide_root_item
         // Open Details Fragment
         cardView.setOnClickListener {
             val bundle = Bundle()
-            bundle.putString("id", current.id)
-            bundle.putString("commonName", current.common_name)
+            bundle.putString("id", current.id.toString())
+            bundle.putString("commonName", current.commonName)
+            bundle.putString("regNumber", current.regNumber)
+            bundle.putString("regCategory", current.regCategory)
+            bundle.putString("tradeName", current.tradeName)
+            /*bundle.putString("commonName", current.common_name)
             bundle.putString("regNumber", current.reg_number)
-            bundle.putString("registrant", current.registrant)
             bundle.putString("regCategory", current.reg_category)
-            bundle.putString("tradeName", current.trade_name)
+            bundle.putString("tradeName", current.trade_name)*/
+            bundle.putString("registrant", current.registrant)
             bundle.putString("usage", current.usage)
 
             val newFragment = AcaricideDetailsFragment()
@@ -71,7 +76,7 @@ class AcaricideListAdapter (
         transaction.commit()
     }
 
-    internal fun setAcaricides(acaricides: List<AcaricideNetworkResponse>) {
+    internal fun setAcaricides(acaricides: List<Acaricide>) {
         this.acaricides = acaricides
         notifyDataSetChanged()
     }

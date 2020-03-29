@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.dustanmbaga.pps.acaricide.Acaricide
+import com.dustanmbaga.pps.acaricide.AcaricideDao
 
 
 /**
@@ -16,7 +17,7 @@ import com.dustanmbaga.pps.acaricide.Acaricide
     exportSchema = false
 )
 abstract class PssDatabase : RoomDatabase() {
-    //abstract val acaricideDao: AcaricideDao
+    abstract val acaricideDao: AcaricideDao
 }
 
 private lateinit var INSTANCE: PssDatabase
