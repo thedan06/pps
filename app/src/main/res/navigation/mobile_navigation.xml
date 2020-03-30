@@ -19,13 +19,13 @@
 
     <fragment
         android:id="@+id/navigation_learn"
-        android:name="com.dustanmbaga.pps.ui.learn.LearnFragment"
+        android:name="com.dustanmbaga.pps.learn.LearnFragment"
         android:label="@string/title_learn"
         tools:layout="@layout/fragment_learn" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.dustanmbaga.pps.ui.settings.SettingsFragment"
+        android:name="com.dustanmbaga.pps.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

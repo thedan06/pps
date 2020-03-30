@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.dustanmbaga.pps.acaricide.AcaricideFragment
-import com.dustanmbaga.pps.ui.learn.LearnFragment
-import com.dustanmbaga.pps.ui.settings.SettingsFragment
+import com.dustanmbaga.pps.learn.LearnFragment
+import com.dustanmbaga.pps.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FragmentContainer: Fragment() {
@@ -27,7 +27,8 @@ class FragmentContainer: Fragment() {
                 selectedFragment = LearnFragment()
             }
             R.id.navigation_settings -> {
-                selectedFragment = SettingsFragment()
+                selectedFragment =
+                    SettingsFragment()
             }
         }
 

@@ -1,5 +1,6 @@
 package com.dustanmbaga.pps.acaricide
 
+import android.util.Log
 import com.dustanmbaga.pps.util.SkipNetworkInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -13,7 +14,7 @@ const val BASE_URL = "https://my-json-server.typicode.com/thedan06/test_api/"
 
 val service: PssNetwork by lazy {
     val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(SkipNetworkInterceptor())
+//        .addInterceptor(SkipNetworkInterceptor())
         .readTimeout(180, TimeUnit.SECONDS)
         .connectTimeout(180, TimeUnit.SECONDS)
         .writeTimeout(180, TimeUnit.SECONDS)

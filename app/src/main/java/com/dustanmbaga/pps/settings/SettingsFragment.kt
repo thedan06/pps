@@ -1,11 +1,11 @@
-package com.dustanmbaga.pps.ui.settings
+package com.dustanmbaga.pps.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.dustanmbaga.pps.R
 
 class SettingsFragment : Fragment() {
@@ -17,8 +17,8 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        settingsViewModel =
-            ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+        settingsViewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_settings, container, false)
         /*val textView: TextView = root.findViewById(R.id.text_settings)
         settingsViewModel.text.observe(this, Observer {

@@ -1,7 +1,6 @@
 package com.dustanmbaga.pps.acaricide
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -10,7 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.dustanmbaga.pps.R
@@ -25,7 +24,7 @@ class AcaricideFragment : Fragment() {
 
     private lateinit var fabRefresh: FloatingActionButton
     private lateinit var acaricideRecyclerview: RecyclerView
-    lateinit var acaricideViewModel: AcaricideViewModel
+    private lateinit var acaricideViewModel: AcaricideViewModel
 
     private lateinit var adapter: AcaricideListAdapter
 
@@ -40,24 +39,14 @@ class AcaricideFragment : Fragment() {
         // Initializing Database
         val database = getDatabase((context as AppCompatActivity))
         val repository = AcaricideRepository(getNetworkService(), database.acaricideDao)
-        acaricideViewModel = ViewModelProviders
-            .of(this, AcaricideViewModel.FACTORY(repository))
-            .get(AcaricideViewModel::class.java)
 
-        //acaricideViewModel = ViewModelProvider(this).get(AcaricideViewModel::class.java)
+        acaricideViewModel = ViewModelProvider(viewModelStore, AcaricideViewModel.FACTORY(repository)).get(AcaricideViewModel::class.java)
         //----------------
 
         fabRefresh = root.findViewById(R.id.fab_refresh)
 
         fabRefresh.setOnClickListener {
-            acaricideViewModel.changeState()
-
-            /*// Observing changes in the DB and updating the UI
-            acaricideViewModel.acaricideList.observe(viewLifecycleOwner, Observer {
-                Log.d("AcaricideFragment", "Data zimevutwa kutoka kwenye DB")
-
-                adapter.setAcaricides(it)
-            })*/
+            //acaricideViewModel.changeState()
 
             // Fetching from API and saving to the DB
             viewLifecycleOwner.lifecycleScope.launch {
@@ -69,8 +58,6 @@ class AcaricideFragment : Fragment() {
 
         // Observing changes in the DB and updating the UI
         acaricideViewModel.acaricideList.observe(viewLifecycleOwner, Observer {
-            Log.d("AcaricideFragment", "Data zimevutwa kutoka kwenye DB")
-
             adapter.setAcaricides(it)
         })
 

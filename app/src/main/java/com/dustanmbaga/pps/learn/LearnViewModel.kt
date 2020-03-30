@@ -1,13 +1,13 @@
-package com.dustanmbaga.pps.ui.settings
+package com.dustanmbaga.pps.learn
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SettingsViewModel : ViewModel() {
+class LearnViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Setting Fragment"
+        value = "This is Learn Fragment"
     }
     val text: LiveData<String> = _text
 }
