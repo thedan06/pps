@@ -17,4 +17,7 @@ interface AcaricideDao{
 
     @Query("SELECT * FROM acaricides ORDER BY common_name, reg_number, registrant ASC")
     fun getAcaricidesLiveData(): LiveData<List<Acaricide>>
+
+    /*@Query("SELECT * FROM acaricides WHERE common_name GLOB '*' || :commonName|| '*'")
+    abstract fun searchAcaricides(commonName: String) : LiveData<List<Acaricide>>*/
 }
