@@ -1,11 +1,13 @@
 package com.dustanmbaga.pps.acaricide
 
+import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -15,7 +17,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.dustanmbaga.pps.R
 import com.dustanmbaga.pps.getDatabase
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_acaricides.*
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +33,7 @@ class AcaricideFragment : Fragment() {
     private lateinit var acaricideViewModel: AcaricideViewModel
 
     private lateinit var acaricideSearchField: TextInputLayout
+    private lateinit var searchTextInput: TextInputEditText
 
     private lateinit var adapter: AcaricideListAdapter
 
@@ -73,13 +78,22 @@ class AcaricideFragment : Fragment() {
             adapter.setAcaricides(it)
         })
 
-
-        // Searching functionality
+        /*// Searching functionality
         //https://stackoverflow.com/questions/51154786/android-implement-search-with-view-model-and-live-data
         acaricideSearchField = root.findViewById(R.id.acaricide_search_field)
         //val searchText = acaricideSearchField.editText?.text.toString()
 
         acaricideSearchField.editText?.doOnTextChanged { textToSearch, _, _, _ ->
+            // call model view passing searchText
+            acaricideViewModel.searchAcaricides(textToSearch.toString())
+
+            acaricideViewModel.searchedAcaricideLists.observe(viewLifecycleOwner, Observer {
+                adapter.setAcaricides(it)
+            })
+        }*/
+
+        searchTextInput = root.findViewById(R.id.search_text_field)
+        searchTextInput.doOnTextChanged { textToSearch, _, _, _ ->
             // call model view passing searchText
             acaricideViewModel.searchAcaricides(textToSearch.toString())
 

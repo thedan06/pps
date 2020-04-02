@@ -5,78 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8sp"
-    android:id="@+id/acaricide_root_item"
-    >
+    android:id="@+id/acaricide_root_item">
 
     <LinearLayout
         android:id="@+id/acaricide_item"
         android:layout_width="match_parent"
-        android:layout_height="30sp"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/acaricide_item_no"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
             android:gravity="center"
-            android:ellipsize="end"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
-            android:maxLines="1"
-            android:scrollHorizontally="true"
-            android:text="No"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-            android:textColor="@color/colorPrimaryDark"
-             />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="1"
+            android:padding="4sp"/>
 
-        <TextView
-            android:id="@+id/acaricide_item_common_name"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.7"
-            android:text="Common Name"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-            android:textColor="@color/colorPrimaryDark"
-            android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:maxLines="1"
-            />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/acaricide_item_reg_no"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.4"
-            android:gravity="center"
-            android:text="Reg. No"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-            android:textColor="@color/colorPrimaryDark"
-            android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:maxLines="1"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="5sp"
+                android:paddingTop="5sp">
 
-        <TextView
-            android:id="@+id/acaricide_item_registrant"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:gravity="start"
-            android:text="Registrant"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-            android:textColor="@color/colorPrimaryDark"
-            android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:maxLines="1"
-            />
+                <TextView
+                    android:id="@+id/acaricide_item_common_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5sp"
+                    android:layout_marginRight="5sp"
+                    android:text="Common Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/xx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/acaricide_item_reg_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="3sp"
+                        android:layout_marginTop="3sp"
+                        android:maxLines="1"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:text="Reg no will come here"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/overlay_dark_50"
+                        android:layout_marginRight="3sp" />
+
+                    <TextView
+                        android:id="@+id/acaricide_item_registrant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="3sp"
+                        android:layout_marginRight="3sp"
+                        android:layout_marginTop="3sp"
+                        android:maxLines="1"
+                        android:layout_weight="2"
+                        android:ellipsize="end"
+                        android:text="Registrant will come here"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/overlay_dark_50" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="1sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginEnd="10sp"
+                android:background="#CDCDCD" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"/>
 
 </androidx.cardview.widget.CardView>

@@ -10,54 +10,40 @@
     <string name="developer">Developer</string>
 
     <string name="pps_intro">
-        PSS (Plant Protection Substances) App is a very simple android app developed simply to provide information to Tanzanian (or non Tanzanian) farmers. Information about "REGISTERED PLANT PROTECTION SUBSTANCES FOR USE IN THE UNITED REPUBLIC OF TANZANIA (URT)".
+        PSS (Plant Protection Substances) App is a very simple and FREE android app developed simply to provide information to Tanzanian (or non Tanzanian) farmers. Information about "REGISTERED PLANT PROTECTION SUBSTANCES FOR USE IN THE UNITED REPUBLIC OF TANZANIA (URT)".
     </string>
 
-    <string name="pps_info">
-        <b>
+    <string name="pps_info"><b>
             1.0 <u>BACKGROUND</u>
         </b>
-        \n
-        Registration of Plant Protection Substances (PPS) in the United Republic of Tanzania (URT) is governed by the Plant Protection Act No. 13 of 1997 (PPA) and the Plant Protection Regulations of 1999 made under Section 42 (1) PPA. Section 17 of the PPA sets out procedures of application for registration of PPS and Section 18 requires registration and publication in the Government Gazette a list of registered Plant Protection Substances.
+        \nRegistration of Plant Protection Substances (PPS) in the United Republic of Tanzania (URT) is governed by the Plant Protection Act No. 13 of 1997 (PPA) and the Plant Protection Regulations of 1999 made under Section 42 (1) PPA. Section 17 of the PPA sets out procedures of application for registration of PPS and Section 18 requires registration and publication in the Government Gazette a list of registered Plant Protection Substances.
 
-        \n\n
-        Registration proceeds via assessing the technical dossiers for the purpose of evaluating impacts to human health and the environment and carrying out bio efficacy effectiveness for the intended uses of the PPS respectively. The technical dossiers and the bio efficacy reports of PPS are subsequently submitted for approval consideration to the Pesticides Approval and Registration Technical Sub – Committee (PARTS) and endorsement is made by the National Plant Protection Advisory Committee (NPPAC).
+        \n\nRegistration proceeds via assessing the technical dossiers for the purpose of evaluating impacts to human health and the environment and carrying out bio efficacy effectiveness for the intended uses of the PPS respectively. The technical dossiers and the bio efficacy reports of PPS are subsequently submitted for approval consideration to the Pesticides Approval and Registration Technical Sub – Committee (PARTS) and endorsement is made by the National Plant Protection Advisory Committee (NPPAC).
 
-        \n\n
-        The Pesticides Approval and Registration Technical Sub-Committee (PARTS) is established under Regulation 16 and the National Plant Protection Advisory Committee (NPPAC) is established under Regulations 3 of the Plant Protection Regulations of 1999 respectively. PARTS and NPPAC are composed of members drawn from various institutions. The PPS registration process also complies to obligations set out by the chemical related Multilateral Environmental Agreements (MEA’s) to which the United Republic of Tanzania is a Party (signed and ratified). The chemical related MEA’s include:
+        \n\nThe Pesticides Approval and Registration Technical Sub-Committee (PARTS) is established under Regulation 16 and the National Plant Protection Advisory Committee (NPPAC) is established under Regulations 3 of the Plant Protection Regulations of 1999 respectively. PARTS and NPPAC are composed of members drawn from various institutions. The PPS registration process also complies to obligations set out by the chemical related Multilateral Environmental Agreements (MEA’s) to which the United Republic of Tanzania is a Party (signed and ratified). The chemical related MEA’s include:
 
         \n
         <li>The Stockholm Convention on Persistent Organic Pollutants (PoPs)</li>
         \n
         <li>The Rotterdam Convention on the Prior Informed Consent Procedure for Certain Hazardous Chemicals and Pesticides in International Trade.</li>
 
-        \n\n\n
-        <b>
+        \n\n\n<b>
             2.0 <u>MAJOR REGISTRATION CATEGORIES OF PLANT PROTECTION SUBSTANCES</u>
         </b>
-        \n\n
-        After registration process, Plant Protection Substances are placed into three (3) major registration categories and these are:
-        \n\n
-        2.1 FULL REGISTRATION CATEGORIES
-        \n
-        Plant Protection Substances are placed into full registration category following acceptable effectiveness on the intended uses and technical information respectively without pending of any non – compliance provision. Validity of registration period in this category is FIVE YEARS renewable and they can be imported and used under regulatory set out importation procedures.
+        \n\nAfter registration process, Plant Protection Substances are placed into three (3) major registration categories and these are:
+        \n\n2.1 FULL REGISTRATION CATEGORIES
+        \nPlant Protection Substances are placed into full registration category following acceptable effectiveness on the intended uses and technical information respectively without pending of any non – compliance provision. Validity of registration period in this category is FIVE YEARS renewable and they can be imported and used under regulatory set out importation procedures.
 
-        \n\n
-        2.2 PROVISIONAL REGISTRATION CATEGORIES
-        \n
-        Plant Protection Substances are placed into provision registration category due to some reason (s) of non-compliance with any provision of the Plant Protection Regulations pending compliance with such provision or direction. Validity of registration period in this category is ONLY two years non - renewable and they can be imported and used under regulatory set out importation procedures.
+        \n\n2.2 PROVISIONAL REGISTRATION CATEGORIES
+        \nPlant Protection Substances are placed into provision registration category due to some reason (s) of non-compliance with any provision of the Plant Protection Regulations pending compliance with such provision or direction. Validity of registration period in this category is ONLY two years non - renewable and they can be imported and used under regulatory set out importation procedures.
 
-        \n\n
-        2.3 RESTRICTED REGISTRATION CATEGORIES
-        \n
-        Restricted Registration category includes Plant Protection Substances which need specially trained personnel or a close supervision of specifically trained personnel on pesticides for their uses. They include fumigants for fumigation purposes and technical materials of pesticides intended for formulation purposes are placed into restricted registration category. Validity of registration period in this category is two years and is renewable and they can be imported and used under regulatory set out importation procedures.
+        \n\n2.3 RESTRICTED REGISTRATION CATEGORIES
+        \nRestricted Registration category includes Plant Protection Substances which need specially trained personnel or a close supervision of specifically trained personnel on pesticides for their uses. They include fumigants for fumigation purposes and technical materials of pesticides intended for formulation purposes are placed into restricted registration category. Validity of registration period in this category is two years and is renewable and they can be imported and used under regulatory set out importation procedures.
 
-        \n\n\n
-        <b>
+        \n\n\n<b>
             3.0 <u>REGULATORY REQUIREMENT AND PROCEDURE FOR IMPORTING REGISTERED PLANT PROTECTION SUBSTANCES</u>
         </b>
-        \n\n
-        Regulation 31(1) of the Plant Protection Regulations stipulates procedures and requirement of importation and attests that ‘’no person may import a registered pesticide unless he is permitted in writing by the Registrant of that pesticide and the said permit is cleared by the Registrar of Pesticides’’. All application to import pesticides shall be submitted to the Registrar of Pesticides. The importation of the Plant Protection Substances is carried out in the defined interrelated stages as explained below:
+        \n\nRegulation 31(1) of the Plant Protection Regulations stipulates procedures and requirement of importation and attests that ‘’no person may import a registered pesticide unless he is permitted in writing by the Registrant of that pesticide and the said permit is cleared by the Registrar of Pesticides’’. All application to import pesticides shall be submitted to the Registrar of Pesticides. The importation of the Plant Protection Substances is carried out in the defined interrelated stages as explained below:
 
         \n
         <li>
@@ -84,12 +70,10 @@
             Issuance of certificate of analysis before distributing the imported pesticides for general uses
         </li>
 
-        \n\n\n
-        <b>
+        \n\n\n<b>
             4.0 <u>MAIN FEATURES IN A LIST OF REGISTERED PLANT PROTECTION SUBSTANCES</u>
         </b>
-        \n\n
-        The main features or information in a list of registered Plant Protection Substances are:
+        \n\nThe main features or information in a list of registered Plant Protection Substances are:
         \n
         <li>
             Registration Categories of PPS
@@ -118,7 +102,153 @@
         <li>
             Intended usage of PPS
         </li>
+
+        \n\n\n<b>
+            5.0 <u>COMMON ABBREVIATIONS OF THE FORMULATIONS FOR THE PLANT PROTECTION SUBSTANCES REGISTERED IN TANZANIA</u>
+        </b>\n<li>
+            AE: Aerosol
+            </li>
+        \n
+        <li>
+            EC: Emulsifiable Concentrate
+            </li>
+        \n
+        <li>
+            SL: Soluble Liquid
+            </li>
+        \n
+        <li>
+            D: Dust
+            </li>
+        \n
+        <li>
+            SC: Suspension Concentrate
+            </li>
+        \n
+        <li>
+            SP: Soluble Powder
+            </li>
+        \n
+        <li>
+            WP: Wettable Powder
+            </li>
+        \n
+        <li>
+            FS: Flowable concentrate for seed treatment
+            </li>
+        \n
+        <li>
+            DS: Powder for dry seed treatment
+            </li>
+        \n
+        <li>
+            CS: Capsule Suspension
+            </li>
+        \n
+        <li>
+            WG: Water Soluble Granules
+            </li>
+        \n
+        <li>
+            ULV: Ultra Low Volume
+            </li>
+        \n
+        <li>
+            TAB: Tablet
+            </li>
+        \n
+        <li>
+            ZC: A mixed formulation of SC and CS
+            </li>
+        \n
+        <li>
+            G: Granule
+            </li>
+        \n
+        <li>
+            P: Pellet
+            </li>
+        \n
+        <li>
+            EW: Emulsion in Water
+            </li>
+        \n
+        <li>
+            SP: Soluble Powder
+            </li>
+        \n
+        <li>
+            GB: Granular Bait
+            </li>
+        \n
+        <li>
+            OD: Oil Dispersion
+            </li>
+        \n
+        <li>
+            WDG: Water Dispersible Granules
+            </li>
+        \n
+        <li>
+            SE: Suspension Emulsion
+            </li>
+        \n
+        <li>
+            SG: Soluble Granule
+            </li>
+        \n
+        <li>
+            WSP: Water Soluble Powder
+            </li>
+        \n
+        <li>
+            WS: Water Dispersible Powder for Slury Seed Treatment
+            </li>
+        \n
+        <li>
+            CG: Encapsulated Granule
+            </li>
+        \n
+        <li>
+            FT: Smoke tablet
+            </li>
+        \n
+        <li>
+            ST: Water Soluble Tablet
+            </li>
+        \n
+        <li>
+            DP: Dispersible Powder
+            </li>
+        \n
+        <li>
+            FW: Flowable Concentrate
+            </li>
+        \n
+        <li>
+            FL: Flowable Liquid
+            </li>
+        \n
+        <li>
+            DF: Dry Flowable
+            </li>
+        \n
+        <li>
+            TC: Technical Material
+        </li>
+        \n\n\n<b>
+            <u>NOTE:</u>
+        </b>\n<li>
+            i) Some plant protection substances did not comply to certain provisions of the regulatory requirements. The respective plant protection substances have been omitted and will be reinstated after when registrants complied with the requirements.
+        </li>
+        \n\n
+        <li>ii)The list also contains:\n
+            a) Biological Control Agents\n
+            b) Acaricides and public health pesticides for the control of animal and human vectors
+            </li>
+        \n
     </string>
+
     <string name="contributors">Contributors</string>
 
     <string-array name="months_array">
