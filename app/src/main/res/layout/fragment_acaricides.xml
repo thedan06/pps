@@ -5,18 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/acaricide_search_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:hint="Search..."
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark" />-->
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:id="@+id/acaricide_item_title"
@@ -25,10 +31,11 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/acaricide_search_field"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp">
 
         <TextView
             android:id="@+id/acaricide_item_no"
@@ -37,6 +44,8 @@
             android:layout_weight="0.4"
             android:gravity="center"
             android:ellipsize="end"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
             android:maxLines="1"
             android:scrollHorizontally="true"
             android:text="No"
@@ -110,10 +119,12 @@
         android:id="@+id/fab_refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:clickable="true"
         android:focusable="true"
+        android:background="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/acaricide_item_title"

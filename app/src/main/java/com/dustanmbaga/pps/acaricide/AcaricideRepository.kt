@@ -3,6 +3,7 @@ package com.dustanmbaga.pps.acaricide
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import java.util.*
 
 
 class AcaricideRepository(private val network: PssNetwork, private val acaricideDao: AcaricideDao) {
@@ -20,6 +21,17 @@ class AcaricideRepository(private val network: PssNetwork, private val acaricide
 
         return acaricides
     }
+
+    //-------------------
+    fun searchAcaricideFromDB(searchText: String): LiveData<List<Acaricide>> {
+        //showProgress.value = false
+        val acaricides = acaricideDao.searchAcaricidesLiveData(searchText.toLowerCase(Locale.ROOT))
+
+        Log.i("AcaricideRepository", "Searched from DB these acaricides: $acaricides")
+
+        return acaricides
+    }
+    //-------------------
 
     /*fun changeState() {
         showProgress.value = !(showProgress.value != null && showProgress.value!!)

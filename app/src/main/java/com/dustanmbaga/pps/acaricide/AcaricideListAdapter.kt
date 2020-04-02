@@ -37,7 +37,7 @@ class AcaricideListAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = acaricides[position]
 
-        holder.acaricideNo.text = current.id.toString()
+        holder.acaricideNo.text = (position + 1).toString() //current.id.toString()
         holder.acaricideCommonName.text = current.commonName
         holder.acaricideRegNo.text = current.regNumber
         holder.acaricideRegistrant.text = current.registrant

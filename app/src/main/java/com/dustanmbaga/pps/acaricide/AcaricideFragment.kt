@@ -7,6 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dustanmbaga.pps.R
 import com.dustanmbaga.pps.getDatabase
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_acaricides.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +27,8 @@ class AcaricideFragment : Fragment() {
     private lateinit var fabRefresh: FloatingActionButton
     private lateinit var acaricideRecyclerview: RecyclerView
     private lateinit var acaricideViewModel: AcaricideViewModel
+
+    private lateinit var acaricideSearchField: TextInputLayout
 
     private lateinit var adapter: AcaricideListAdapter
 
@@ -58,8 +62,31 @@ class AcaricideFragment : Fragment() {
 
         // Observing changes in the DB and updating the UI
         acaricideViewModel.acaricideList.observe(viewLifecycleOwner, Observer {
+
+            // Testing showing and hiding progress bar
+            if (it.isEmpty()) {
+                progressBar.visibility = VISIBLE
+            } else {
+                progressBar.visibility = GONE
+            }
+
             adapter.setAcaricides(it)
         })
+
+
+        // Searching functionality
+        //https://stackoverflow.com/questions/51154786/android-implement-search-with-view-model-and-live-data
+        acaricideSearchField = root.findViewById(R.id.acaricide_search_field)
+        //val searchText = acaricideSearchField.editText?.text.toString()
+
+        acaricideSearchField.editText?.doOnTextChanged { textToSearch, _, _, _ ->
+            // call model view passing searchText
+            acaricideViewModel.searchAcaricides(textToSearch.toString())
+
+            acaricideViewModel.searchedAcaricideLists.observe(viewLifecycleOwner, Observer {
+                adapter.setAcaricides(it)
+            })
+        }
 
         acaricideViewModel.showProgress.observe(viewLifecycleOwner, Observer {
             if (it) {
